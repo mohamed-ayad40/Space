@@ -20,27 +20,24 @@ closeBtn.onclick = () => {
 };
 
 
-if(window.location.pathname === "/login.html") {
-    console.log(true)
+if(window.location.pathname === "/Space/login.html") {
     goRegister.onclick = () => {
         window.location = "register.html";
     };
 
-} else if(window.location.pathname === "/register.html") {
+} else if(window.location.pathname === "/Space/register.html") {
     goLogin.onclick = () => {
         window.location = "login.html";
     };
 }
 
 form.onsubmit = async (e) => {
-    // console.log(document.getElementById("image").files[0])
     e.preventDefault()
     toggleLoader(true);
-    e.preventDefault();
     const formData = new FormData(form);
     formData.append("username", document.getElementById("username").value);
     formData.append("password", document.getElementById("password").value);
-    if(window.location.pathname === "/login.html") {
+    if(window.location.pathname === "/Space/login.html") {
         url = `${baseURL}/login`;
     } else {
         url = `${baseURL}/register`;

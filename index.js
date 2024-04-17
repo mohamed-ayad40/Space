@@ -69,13 +69,13 @@ function loginCheck() {
     window.location = "login.html";
   }
 }
-if(!window.location.pathname === "/register.html" && !window.location.pathname === "/login.html") {
+if(!window.location.pathname === "/Space/register.html" && !window.location.pathname === "/Space/login.html") {
   getPosts(currentPage);
   console.log("c")
 }
 user = getCurrentUser();
 // console.log(user);
-if(window.location.pathname === "/index.html" && user && typeof user.profile_image === 'string' && user.profile_image.startsWith('http')) {
+if(window.location.pathname === "/Space/index.html" && user && typeof user.profile_image === 'string' && user.profile_image.startsWith('http')) {
   document.querySelector(".add-post img").src = user.profile_image
 }
 
@@ -91,9 +91,6 @@ if(themeToggleBtn) {
   });
 }
 
-// document.querySelector(".header-info").onclick = (e) => {
-//     editPostTemplate.classList.add("active");
-// };
 
 function logout() {
   localStorage.removeItem("token");
@@ -209,12 +206,12 @@ window.addEventListener("scroll", function (e) {
   // }
   // console.log(postViewPortHeights)
   if (commentsPhoneSection.classList.contains("active")) {
-    // console.log("seeeeeed")
+
     e.preventDefault();
-    // document.body.classList.add("no-scroll")
+
   }
   let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  // console.log(scrollHeight)
+
   let nothing = undefined;
 
   if (document.documentElement.scrollTop >= scrollHeight && currentPageDB < lastPage) {
@@ -232,10 +229,7 @@ function userClicked(userId) {
 };
 
 async function postClicked(postId) {
-//   document.body.style.overflow = "hidden";
-// document.body.style.overflowY = "auto";
-// document.body.classList.add("no-scroll");
-  // window.location = `postDetails.html?postId=${postId}`;
+
   loader.classList.add("active");
   console.log(postId)
   console.log(postId)
@@ -256,8 +250,7 @@ async function postClicked(postId) {
     editPostObj = data;
 
     let userImage = document.querySelector(".post__comments .user__info img");
-    // console.log(userImage)
-    // userImage.src = "unknownPerson.jpg"
+
     commentsContainer.innerHTML = "";
     let title;
     let profileImage;
@@ -362,7 +355,7 @@ async function postClicked(postId) {
         `;
         commentsContainer.innerHTML += content;
     };
-    // document.querySelector(".comments__section input").focus();
+
     let img = document.querySelector(".post__section img");
     document.querySelector(".post__comments .username").innerHTML = data.author.name;
     document.querySelector(".post__comments .user__info img").src = profileImage;
@@ -389,18 +382,18 @@ function triggerTyping () {
       iconHolder.classList.remove("active");
     } else if(swipeCommentInput.querySelector("input").value) {
         iconHolder.classList.add("active");
-        // swipeCommentInput.querySelector("input").addEventListener("keyup", (e) => {
+        
         if(e.key === "Enter" && !e.shiftKey) {
           comment = e.target.value;
           console.log(comment)
           let functionality = "phoneComment";
           createComment(commentsPhoneSection.dataset.post, comment, functionality);
-          // console.log(postId)
+
           console.log(id)
           e.target.value = "";
           iconHolder.classList.remove("active");
         };
-        // });
+
         iconHolder.addEventListener("click", (e) => {
           comment = swipeCommentInput.querySelector("input").value;
           let functionality = "phoneComment";
@@ -424,9 +417,9 @@ function openSwipeComments () {
     commentsPhoneSection.classList.add("no-transition");
     let touch = e.touches[0];
     if (!touchStartY) {
-      // console.log("fuck")
+
       touchStartY = touch.clientY; // Assign initial touch position
-      // console.log(touchStartY)
+
     };
   });
 
@@ -438,39 +431,38 @@ function openSwipeComments () {
     // console.log(estimatedViewportHeight - currentTouchY)
     // Calculate the movement since the touch began
     touchMovement = currentTouchY - touchStartY;
-    // console.log(touchMovement)
+
     const movementPercentage = (touchMovement / estimatedViewportHeight) * 100;
     commentsPhoneSection.style.transform = `translateY(${movementPercentage}%)`;
   });
 
 
   document.querySelector(".swipe__comments .header__section").addEventListener("touchend", (e) => {
-    // console.log(e)
+
     let touchEndY = e.changedTouches[0].clientY;
-    // console.log(touchEndY)
+
     const swipeDistance = touchStartY - touchEndY;
     const collapseThreshold = 550; // Upward swipe to fully show comments
     const expandThreshold = 390; // Downward swipe to partially hide comments
     // touchStartY = touchEndY;
     // const currentTouchY = e.touches[0].clientY;
-    // console.log(estimatedViewportHeight - currentTouchY)
-    // console.log(touchStartY)
+
     // Calculate the movement since the touch began
     // const touchMovement = currentTouchY - touchStartY;
     // Update CSS classes based on movement
     if (touchEndY > collapseThreshold) {
-      // if(touchEndY > touchStartY) {
+
         commentsPhoneSection.classList.remove("no-transition");
         commentsPhoneSection.style.transform = `translateY(100%)`;
         swipeCommentInput.classList.remove("active");
         focusOut();
-      // }
+
     } else if (touchEndY < expandThreshold) {
       commentsPhoneSection.classList.remove("no-transition");
-      // console.log("man")
+
       commentsPhoneSection.style.transform = `translateY(-49%)`;
     }
-    // console.log(swipeDistance)
+
   });
 };
 
@@ -495,19 +487,7 @@ function css(element, style) {
       element.style[property] = style[property];
 };
 
-// function handleReadMoreButtons () {
-//   const cards = document.querySelectorAll(".card");
-//   for (let card of cards) {
-//     const title = card.querySelector(".title");
-//     const details = card.querySelector(".details");
-//     const titleSpan = card.querySelector(".title__holder span");
-//     const detailsSpan = card.querySelector(".details__holder span");
-//     toggleReadMoreSpans(title, titleSpan);
-//     toggleReadMoreSpans(details, detailsSpan);
-//   };
-// };
 
-// document.addEventListener("DOMContentLoaded", handleReadMoreButtons);
 if(alertCloseBtn) {
   alertCloseBtn.onclick = () => {
     alert.classList.add("hide");
@@ -524,29 +504,21 @@ if(alertCloseBtn) {
 }
 
 function focusIn (e) {
-  // overlay.classList.toggle("hidden");
-  // document.body.classList.add('no-scroll');
+
   document.body.style.overflow = "hidden";
-  // overlay.style.display = "block";
   overlay.classList.add("showup");
 };
 
 function focusOut (e) {
-  // overlay.style.display = "none";
+
   overlay.classList.remove("showup")
-  // overlay.classList.add("hidden");
+
   document.body.style.overflowY = "auto";
   document.querySelectorAll(".sub-menu-wrap").forEach(el => el.classList.remove("open-menu"));
   document.body.classList.remove("no-scroll");
 }
 
-// if(addDiv) {
-//   addDiv.addEventListener("click", (e) => {
-//     createPostForm.classList.add("active");
-//     focusIn(e);
-//     e.stopPropagation();
-//   });
-// };
+
 if(footerAddPost) {
   footerAddPost.onclick = (e) => {
     if (!createPostForm.classList.contains("active")) {
@@ -604,175 +576,7 @@ function moveTo() {
     document.querySelector("#container").innerHTML = "";
   }
 }
-// console.log(createPostForm);
-// console.log(editPostForm);
-// document.body.addEventListener("click", (event) => {
-//   event.stopPropagation()
-//   document.querySelectorAll(".sub-menu-wrap").forEach(el => {
-//     if (el.classList.contains("open-menu") && !editPostForm.contains(event.target) && !createPostForm.contains(event.target)) {
-//       focusOut();
-//     };
-//   });
-//   // Check if the click is outside the popup or its children
-//   if (!editPostForm.contains(event.target) && editPostForm.classList.contains("open")) {
-//     editPostForm.classList.remove("open");
-//     // editPostForm.classList.add("close");
-//     focusOut();
-//   } else if (createPostForm && !createPostForm.contains(event.target) && createPostForm.classList.contains("active")) {
-//     createPostForm.classList.remove("active");
-//     focusOut();
-//   } else if (!deleteDiv.contains(event.target) && deleteDiv.classList.contains("active")) {
-//     deleteDiv.classList.remove("active");
-//   } else if (!thePost.contains(event.target) && thePost.classList.contains("open")) {
-//     if (document.querySelector(".edit__popup.active") && !document.querySelector(".edit__popup.active").contains(event.target)) {
-//             document.querySelector(".edit__popup.active").classList.remove("active");
-//     };
-//     // thePost.classList.remove("open");
-//     // focusOut();
-//     // if(document.querySelector(".edit__popup.active") && !document.querySelector(".edit__popup.active").contains(event.target)) {
-//     //   document.querySelector(".edit__popup.active").classList.remove("active");
-//     //   thePost.classList.remove("open");
-//     //   console.log(document.querySelector(".edit__popup.active"))
-//     //   focusOut();
-//     // }
-//   };
-//   if (event.target.classList.contains("view") && !overlay.classList.contains("showup")) {
-//     if(!thePost.contains(event.target) && thePost.classList.contains("open")){
-//       overlay.classList.remove("showup");
-//     } else {
-//       console.log("fucker")
-//       overlay.classList.add("showup");
-//       const postData = JSON.parse(decodeURIComponent(event.target.dataset.post));
-//       let id = postData.id;
-//       console.log(postData);
-//       postObj = postData;
-//       console.log(postObj)
-//       if(window.innerWidth > 450) {
-//         console.log("true")
-//         postClicked(id);
-//       } else {
-//         openSwipeComments(id);
-//         triggerTyping(id);
-//         commentsPhoneSection.style.transform = `translateY(0%)`;
-//         fetchTheComments(id);
-//       };
-//     };
-//   } else if(commentsPhoneSection.classList.contains("active")) {
-//     console.log("true")
-//   }
-//   let container = document.querySelector(".post__comments");
-//   let menu = container.querySelector(".sub-menu-wrap-post");
-//   if(event.target.classList.contains("inside_post") && event.target.id === "dots") {
-//     console.log("fuckiii")
-//     event.stopPropagation();
-//     if(menu) {
-//       menu.classList.toggle("expand");
-//     };
-//     thePost.addEventListener("click", (e) => {
-//       console.log(e.target.classList)
-//       // console.log("false")
-//       if(e.target.closest(".post__comments").classList.contains("open") && !e.target.closest(".sub-menu-wrap-post")) {
-//         menu.classList.remove("expand");
-//       } else if(e.target.closest(".sub-menu-link") && e.target.closest(".sub-menu-link").id === "edit") {
-//         console.log("sososo");
-//         editPost(editPostObj);
-//         menu.classList.remove("expand");
-//         document.querySelector(".edit__popup").classList.add("active");
-//       }
 
-      
-
-//       if(e.target.classList.contains("close") && thePost.classList.contains("open")) {
-//         console.log("fuck again")
-
-//         if(e.target.closest(".edit__popup")) {
-//           // console.log("true")
-//           e.target.closest(".edit__popup").classList.remove("active");
-//         }
-//       } else if (e.target.classList.contains("showup")) {
-//         // console.log("show me")
-//         thePost.classList.remove("open");
-//         overlay.classList.remove("showup");
-//         focusOut()
-//         menu.classList.remove("open-menu-two");
-//       } else if (!editPostTemplate.contains(e.target) && editPostTemplate.classList.contains("active")) {
-//         editPostTemplate.classList.remove("active");
-//         menu.classList.remove("open-menu-two");
-//       } else if(!e.target.classList.contains("showup") && menu.classList.contains("open-menu-two")) {
-//         menu.classList.remove("open-menu-two");
-//       }
-//       //if(!menu.contains(e.target) && !e.target.contains(container.querySelector(".edit__popup"))) {
-//         // menu.classList.remove("open-menu-two")
-//       //}
-//       // if (!container.contains(event.target)) {
-//       //   console.log(container.querySelector(".edit__popup"))
-//       // }
-
-//       // if(!container.querySelector(".edit__popup.active").contains(event.target)) {
-//       //   console.log("continue")
-//       // }
-//     })
-    
-//     // const menu = dot.parentElement.querySelector(".sub-menu-wrap");
-//     // console.log(e.target);
-//     // const menu = e.target.parentElement.querySelector(".sub-menu-wrap");
-//     // menu.classList.toggle("open-menu");
-//   } else if (thePost.classList.contains("open")) {
-//     console.log("true11")
-//     if(event.target.classList.contains("showup")) {
-//       focusOut();
-//       thePost.classList.remove("open");
-//     } else if(!event.target.closest(".post__comments") && !overlay.classList.contains("showup")) {
-//       thePost.classList.remove("open");
-//     }
-    
-//   } else if (event.target.classList.contains("showup") && commentsPhoneSection.classList.contains("active")) {
-//     commentsPhoneSection.classList.remove("no-transition");
-//     swipeCommentInput.classList.remove("active");
-//     commentsPhoneSection.classList.remove("active");
-//     focusOut();
-//   } else if(event.target.classList.contains("close") && editPostTemplate.classList.contains("active")) {
-//     editPostTemplate.classList.remove("active");
-//     focusOut();
-//   } else if(event.target.classList.contains("showup") && editPostTemplate.classList.contains("active")) {
-//     editPostTemplate.classList.remove("active");
-//     focusOut();
-//   };
-// });
-
-// cancelDeleteBtns.forEach(btn => {
-//   btn.addEventListener("click", (e) => {
-//     console.log(e.target)
-//     console.log(btn)
-//     // console.log(e.target.parentElement.parentElement)
-//     e.target.parentElement.parentElement.classList.remove("open");
-//     e.target.parentElement.parentElement.classList.remove("active");
-//     editPostForm.classList.remove("active")
-//     editPostTemplate.classList.remove("active")
-//     if(!thePost.classList.contains("open")) {
-//       focusOut();
-//     }
-//   });
-// });
-
-// closeBtns.forEach(btn => {
-//   btn.addEventListener("click", (e) => {
-//     e.target.parentElement.parentElement.classList.remove("active");
-//     editPostForm.classList.remove("active")
-//     editPostTemplate.classList.remove("active")
-//     if(!thePost.classList.contains("open")) {
-//       focusOut();
-//     };
-//   });
-// });
-
-// document.body.querySelectorAll(".close").forEach(btn => {
-//   btn.addEventListener("click", e => {
-//     console.log(e.target)
-//     editPostForm.classList.remove("active")
-//     editPostTemplate.classList.remove("active")
-//   }, {capture: true});
-// });
 
 async function fetchTheComments(postId) {
   loader.classList.add("active");
@@ -796,12 +600,11 @@ async function fetchTheComments(postId) {
     if (data) {
       for(let comment of comments) {
         if (comment.author.profile_image && typeof comment.author.profile_image === 'string' && comment.author.profile_image.startsWith('http')) {
-          // console.log(true)
+
           image = comment.author.profile_image;
         } else {
           image = `unknownPerson.jpg`;
-          // console.log(type)
-          // console.log(false)
+
         }
         content = `
           <div class="comment" data-user="${comment.author.id}" data-id="${comment.id}">
@@ -834,16 +637,14 @@ function getCurrentUser() {
 };
 
 function editPost (postData) {
-  // console.log(postData)
-  // console.log("fuck")
-  // overlay.style.display = "block";
+
   if(!thePost.classList.contains("open")) {
     overlay.classList.add("showup");
     focusIn();
   };
   editPostForm.classList.add("open");
   editPostForm.querySelectorAll(".type").forEach(el => {
-    // console.log(typeof el)
+
     if(el.dataset.el === "input") {
       el.value = postData.title;
     } else if (el.dataset.el === "textarea") {
@@ -863,7 +664,7 @@ function deleteConfirmation(postData) {
 
 function getCurrentUserId() {
   const urlParams = new URLSearchParams(window.location.search);
-  // console.log(urlParams)
+
   const id = urlParams.get("userId");
   return id;
 };
@@ -872,14 +673,12 @@ function userClicked(userId) {
   window.location = `profile.html?userId=${userId}`;
 };
 
-// if(currentPage === "profile") {
-//   getPosts("profile")
-// }
+
 
 // Fetching the posts
 async function getPosts(currentPage, scrollHeight, page = 1) {
   loader.classList.add("active");
-  // console.log(scrollHeight)
+
   if (scrollHeight === "undefined") {
     scrollHeight = 0;
   } else {
@@ -894,7 +693,7 @@ async function getPosts(currentPage, scrollHeight, page = 1) {
     url = `${baseURL}/posts?sort=posts&limit=8&page=${page}`;
   } else if(currentPage === "profile") {
     let id = getCurrentUserId();
-    // console.log(id)
+
     if(!id) {
       let user = getCurrentUser();
       id = user.id;
@@ -906,26 +705,25 @@ async function getPosts(currentPage, scrollHeight, page = 1) {
   })
   .then((response) => {
     let data = response.json();
-    console.log(data)
-    // console.log(response)
+
+
     return data;
   }).then((data) => {
-    console.log(data)
+
     if(currentPage === "home") {
       lastPage = data.meta.last_page;
     }
     data = data.data;
     if(currentPage === "profile") {
       data = data.reverse();
-      // console.log(data[0].author)
+ 
       let profileInfo
       if(data[0]) {
         profileInfo = data[0].author;
       } else {
         profileInfo = JSON.parse(window.localStorage.getItem("user"));
-      }
-      console.log(user)
-      // let profileInfo = data[0].author;
+      };
+
       let profileImage = profileInfo.profile_image;
       let profileUsername = profileInfo.username;
       if (typeof profileImage === 'string' && profileImage.startsWith('http')) {
@@ -934,27 +732,20 @@ async function getPosts(currentPage, scrollHeight, page = 1) {
         document.querySelector(".profile__header img").src = 'unknownPerson.jpg';
       };
       document.querySelector(".profile__header .profile__username").textContent = profileUsername;
-      // // profileUsername.textContent = 
+
     };
-    // console.log(data)
+
     loader.classList.remove("active");
     for (post of data) {
         let author = post.author;
         let postTitle = "";
         // Show Or Hide (edit) button
         let user = getCurrentUser();
-        // if (!user) {
-        //   console.log("wtf")
-        //   // window.location = "";
-        // }
+
         let isMyPost = user != null && post.author.id == user.id;
         let postAuth = ``;
         if (isMyPost) {
-            // editBtnContent = 
-            // `
-            // <button class='btn btn-danger' style='margin-left: 5px; float: right' onclick="deletePostBtnClicked('${encodeURIComponent(JSON.stringify(post))}')">Delete</button>
-            // <button class="btn btn-secondary" style="float: right;" onclick="editPostBtnClicked('${encodeURIComponent(JSON.stringify(post))}')">Edit</button>
-            // `
+
             postAuth = `
             <div class="sub-menu-wrap">
               <div class="sub-menu">
@@ -1043,16 +834,14 @@ async function getPosts(currentPage, scrollHeight, page = 1) {
 
         document.getElementById("container").innerHTML += content;
         let commentInputButtons = document.querySelectorAll("#comment");
-        let sendCommentButtons = document.querySelectorAll(".comment-div button");
+        
         commentInput = document.getElementById("comment").value;
-        // console.log(postViewPortHeights)
-        // console.log(scrollHeight)
-        // console.log(page)
+
         if (scrollHeight > document.documentElement.clientHeight) {
           if (page > 1) {
             scrollHeight+= document.documentElement.clientHeight;
           }
-          // scrollHeight+= document.documentElement.clientHeight;
+         
           window.scrollTo({
             top: scrollHeight,
             behavior: 'smooth' // Optional for smoother scrolling
@@ -1062,9 +851,9 @@ async function getPosts(currentPage, scrollHeight, page = 1) {
           el.addEventListener("keyup", (e) => {
             if(e.key === "Enter" && !e.shiftKey) {
               comment = e.target.value;
-              // console.log(comment)
+
               let id = e.target.dataset.postid;
-              // console.log(id)
+    
               createComment(id, comment);
               e.target.value = "";
             };
@@ -1138,37 +927,7 @@ async function getPosts(currentPage, scrollHeight, page = 1) {
             contentElement.classList.toggle("active");
           });
         });
-        // const dots = document.querySelectorAll("#container .card .dots");
-        // dots.forEach((dot) => {
-        //   dot.addEventListener("click", (e) => {
-        //     e.stopPropagation();
-        //     // const menu = e.target.nextElementSibling;
-        //     const menu = dot.parentElement.querySelector(".sub-menu-wrap");
-        //     // console.log(e.target);
-        //     // const menu = e.target.parentElement.querySelector(".sub-menu-wrap");
-        //     menu.classList.toggle("open-menu");
-        //     // overlay.classList.toggle("hidden");
-        //     // css(overlay, {
-        //     //   display: "block"
-        //     // });
-        //     overlay.classList.add("showup");
-        //     document.addEventListener("click", (e) => {
-        //       e.stopPropagation()
-        //       if (!dot.contains(e.target)) {
-        //         const allMenus = document.querySelectorAll(".sub-menu-wrap");
-        //         allMenus.forEach(menu => {
-        //           menu.classList.remove("open-menu");
-        //           // css(overlay, {
-        //           //   display: "none"
-        //           // });
-        //           // overlay.classList.add("hidden");
-        //           overlay.classList.add("showup");
-        //         });
-        //         // document.removeEventListener("click", this); // Remove this listener
-        //       };
-        //     });
-        //   });
-        // });
+
         setTimeout(() => {          
           cards.forEach(card => {
             const contentElement = card.querySelectorAll(".skeleton");
@@ -1258,109 +1017,11 @@ async function createComment(postId, commentBody, functionality) {
   }, 5000);
 };
 
-// document.addEventListener("click", (event) => {
-//   const commentClicked = event.target.closest(".share__comment");
-//   console.log(commentClicked)
-//   const clickedLink = event.target.closest(".sub-menu-link");
-//   const viewComments = event.currentTarget.closest("h5");
-//   if(viewComments) {
-//     console.log("fucking true");
-//   }
-
-//   // const createCommentClicked = event.target.closest(".comment-div");
-//   // let postData = JSON.parse(decodeURIComponent(clickedLink.dataset.post));
-//   // postObj = postData;
-//   if (clickedLink) {
-//     const postData = JSON.parse(decodeURIComponent(clickedLink.dataset.post));
-//     event.stopPropagation();
-//     if (clickedLink.id === "edit") {
-//       console.log("smsmsm")
-//       // editPost(postData);
-//     } else if (clickedLink.id === "delete") {
-
-//       deleteConfirmation(postData.id);
-//     } else if (clickedLink.id === "cancel") {
-
-//       focusOut();
-//     }
-//   }
-//   if (commentClicked) {
-//     let postId = commentClicked.previousElementSibling.dataset.postid;
-//     let value = commentClicked.previousElementSibling.value;
-//     createComment(postId, value)
-//   } else if (viewComments) {
-//     postObj = postData;
-//     console.log("fuck")
-//     let id = event.target.dataset.id;
-//     // overlay.classList.add("showup");
-//     document.body.classList.add("fuck")
-//     document.body.backgroundColor = "red";
-//     console.log(id)
-//     if (window.innerWidth > 400) {
-//       console.log("true")
-//       postClicked(id);
-//     }
-//   };
-// });
-
-
-
-
-// document.body.addEventListener("click", (event) => {
-//   const clickedLink = event.target.closest(".sub-menu-link");
-//   if (clickedLink) {
-//     const postData = JSON.parse(decodeURIComponent(clickedLink.dataset.post));
-
-//     event.stopPropagation();
-//     console.log(postData);
-//     if (clickedLink.id === "edit") {
-//       focusIn();
-//       console.log("thta")
-//       // editPost(postData);
-//       editPostTemplate.classList.add("active");
-//       let title = "";
-//       console.log(postData.body)
-//       if (postData.title) {
-//         title = postData.title;
-//       }
-//       editPostObj = postData;
-//       console.log("**************************************")
-//       console.log(postData)
-//       // let template = document.createElement("div");
-//       console.log(postData.body)
-//       editPostTemplate.classList.add("active");
-//       editPostTemplate.querySelector(".type__title").value = title;
-//       editPostTemplate.querySelector(".type__details").value = postData.body;
-//       console.log(editPostTemplate)
-//     } else if (clickedLink.id === "delete") {
-//       console.log("true now");
-//       deleteConfirmation(postData.id);
-//     } else if (clickedLink.id === "cancel") {
-//       document.querySelector(".sub-menu-wrap").classList.remove("open-menu-two");
-//     };
-//   };
-// });
-
-
-
-  // alert( comp.lineHeight );
-  // console.log(lines)
-// document.addEventListener("onload", () => {
-//   document.querySelectorAll("a").forEach(element => {
-//     element.addEventListener("click", (e) => {
-//       // e.stopPropagation();
-//       console.log(e.target)
-//       deleteConfirmation(e.target.dataset.id);
-//     });
-//   });
-// });
-
 
 // Async functions
 if(deleteButton) {
   deleteButton.addEventListener("click", (e) => {
     let postId = deleteDiv.dataset.id;
-    // console.log(postId)
     deletePost(postId);
     deleteDiv.classList.remove("active");
     if(thePost.classList.contains("open")) {
@@ -1454,7 +1115,6 @@ async function createNewPost(formData, functionality, event) {
         thePost.classList.remove("open");
       };
       popup.querySelectorAll(".type").forEach(el => el.value = "");
-      // popup.querySelectorAll("textarea").forEach(el => el.value = "");
 
       focusOut();
       getPosts(currentPage);
@@ -1487,8 +1147,7 @@ document.addEventListener("click", handleOpeningClicks, { capture: true });
 
 function handleOpeningClicks(e) {
   loginCheck()
-  // console.log(e.target);
-  // console.log(e.currentTarget);
+
   if(thePost && !thePost.classList.contains("open")) {
     if(e.target.id === "dots") {
       // Inside dots
@@ -1500,8 +1159,7 @@ function handleOpeningClicks(e) {
       // Much Much Much code here inside sub menu wrap
       let option = e.target;
       let postData = JSON.parse(decodeURIComponent(option.dataset.post));
-      // console.log(postData)
-      // console.log("true")
+
       menu.classList.remove("open-menu");
       if(option.id === "edit"){
         let title;
@@ -1512,13 +1170,13 @@ function handleOpeningClicks(e) {
         editPostForm.classList.add("active");
         editPostForm.querySelector("#title").value = title;
         editPostForm.querySelector("#details").value = postData.body;
-        // console.log("edit");
+
       } else if(option.id === "delete") {
-        // console.log("delete");
+
         deleteDiv.classList.add("active");
         deleteDiv.dataset.id = postData.id;
       } else if(option.id === "cancel") {
-        // console.log("cancel");
+
         focusOut();
       };
     } else if(e.target.classList.contains("add-div")) {
@@ -1534,16 +1192,16 @@ function handleOpeningClicks(e) {
         focusIn();
         openSwipeComments();
         console.log(id)
-        // triggerTyping(id);
+
         commentsPhoneSection.style.transform = `translateY(0%)`;
         fetchTheComments(id);
-        // console.log(id)
+
       }
     } else if(e.target.classList.contains("share__comment")) {
       let shareBtn = e.target.closest(".share__comment");
       let postId = shareBtn.previousElementSibling.dataset.postid;
       let value = shareBtn.previousElementSibling.value;
-      // console.log(postId, value);
+
       if (value) {
         createComment(postId, value);
       };
@@ -1558,8 +1216,7 @@ function handleOpeningClicks(e) {
     } else if(e.target.classList.contains("sub-menu-link") && menu.classList.contains("expand")) {
       let option = e.target;
       let postData = JSON.parse(decodeURIComponent(option.dataset.post));
-      // console.log(postData)
-      // console.log("true")
+
       menu.classList.remove("expand");
       if(option.id === "edit"){
         let title;
@@ -1570,15 +1227,15 @@ function handleOpeningClicks(e) {
         editPostForm.classList.add("active");
         editPostForm.querySelector("#title").value = title;
         editPostForm.querySelector("#details").value = postData.body;
-        // console.log("edit");
+
       } else if(option.id === "delete") {
-        // console.log("delete");
+
         deleteDiv.classList.add("active");
         deleteDiv.dataset.id = postData.id;
       } else if(option.id === "cancel") {
-        // console.log("cancel");
+
         menu.classList.remove("expand");
-        // focusOut();
+
       };
     } else if(!e.target.classList.contains("showup")) {
       menu.classList.remove("expand");
