@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: url("bg.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: animateBg 5s linear infinite;
+    transition: all 0.5s ease-out;
+}
+@keyframes animateBg {
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+.sign-box {
+    position: relative;
+    width: 400px;
+    height: 650px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+}
+h2 {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+.input-box {
+    position: relative;
+    width: 310px;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+}
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #fff;
+    pointer-events: none;
+    transition: top 0.3s;
+}
+.input-box input:focus~label, 
+.input-box input:valid~label {
+    transition: top .3s;
+    top: -5px;
+}
+.input-box input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #fff;
+    padding: 0 35px 0 5px;
+}
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2em;
+    line-height: 57px;
+}
+.remember-forget {
+    margin: -15px 0 15px;
+    font-size: 0.9em;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+.remember-forget label input {
+    margin-right: 3px;
+}
+.remember-forget a {
+    color: #fff;
+    text-decoration: none;
+}
+.remember-forget a:hover {
+    text-decoration: underline;
+}
+button {
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #000;
+    font-weight: 500;
+}
+.register-link {
+    font-size: .9em;
+    color: #fff;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+.register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+.register-link p a:hover {
+    text-decoration: underline;
+}
+#image {
+    margin-top: 20px;
+}
+@media (max-width: 360px) {
+    .sign-box {
+        width: 100%;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+    }
+    .input-box {
+        width: 290px;
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root {
+    --alert-bg-color: white;
+    --alert-font-color: white;
+    --alert-border-left-color: white;
+    --alert-closeBtn-bg-color: white;
+    --alert-closeBtn-hover-bgColor: white ;
+}
+.success-alert {
+    --bg-color: #a8f0c6;
+    --font-color: #039503;
+    --border-left-color: #178344;
+    --closeBtn-bg-color: #55bf55;
+    --closeBtn-hover-bgColor: #009300ab;
+}
+.danger-alert {
+    --bg-color: #f7a7a3;
+    --font-color: #fb2e2e;
+    --border-left-color: #8f130c;
+    --closeBtn-bg-color: #c51111;
+    --closeBtn-hover-bgColor: #6f06009f;
+}
+.warning-alert {
+    --bg-color: #ffdb9b;
+    --font-color: #ce8500;
+    --border-left-color: #ffa502;
+    --closeBtn-bg-color: #ffd080;
+    --closeBtn-hover-bgColor: #ffc766;
+}
+
+html, body {
+    height: 100%;
+}
+body {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+.alert {
+    background: var(--bg-color);
+    padding: 20px 40px;
+    min-width: 420px;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    border-radius: 4px;
+    border-left: 4px solid var(--border-left-color);
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+.alert.showAlert {
+    opacity: 1;
+    pointer-events: auto;
+}
+.alert.show {
+    animation: show_slide 1s ease forwards;
+}
+@keyframes show_slide {
+    0% {
+        transform: translateX(100%);
+    }
+    40% {
+        transform: translateX(-10%);
+    }
+    80% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+}
+.alert.hide {
+    animation: hide_slide 1s ease forwards;
+}
+@keyframes hide_slide {
+    0% {
+        transform: translateX(-10px);
+    }
+    40% {
+        transform: translateX(0%);
+    }
+    80% {
+        transform: translateX(-10%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+.alert .fa-exclamation-circle {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--font-color);
+    font-size: 30px;
+}
+.alert .msg {
+    padding: 0 20px;
+    font-size: 18px;
+    color: var(--font-color);
+}
+.alert .close-btn {
+    position: absolute;
+    background: var(--closeBtn-bg-color);
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px 18px;
+    cursor: pointer;
+}
+.close-btn:hover {
+    background-color: var(--closeBtn-hover-bgColor);
+}
+.close-btn .fa-times {
+    color: var(--font-color);
+    font-size: 22px;
+    line-height: 40px;
+}
+.loader {
+    visibility: hidden;
+    position: absolute;
+    z-index: 99999;
+    width: 275px;
+    height: 275px;
+    border-radius: 50%;
+    background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd);
+    animation: animate 1.2s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd);
+}
+
+.loader span:nth-child(1) {
+    filter: blur(5px);
+}
+
+.loader span:nth-child(2) {
+    filter: blur(10px);
+}
+
+.loader span:nth-child(3) {
+    filter: blur(25px);
+}
+
+.loader span:nth-child(4) {
+    filter: blur(50px);
+}
+
+.loader:after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: #f1f1f1;
+    border: solid white 10px;
+    border-radius: 50%;
+}
+
+.loginP {
+    color: white;
+    margin-bottom: 10px;
+
+}
+.loginP a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}

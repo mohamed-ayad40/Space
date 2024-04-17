@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- <link rel="stylesheet" href="alert.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Skeleton Loading using CSS</title>
+</head>
+<body class="" data-currentPage="home">
+  <!-- <div class="container">
+    <template id="card-template">
+      <a class="card" id="card-link" target="_blank">
+        <div class="card__header">
+          <div> -->
+            <!-- <img class="card__header header__img skeleton" src="" alt=""> -->
+            <!-- <img class="header__img skeleton" onerror="this.style.display='none'" id="logo-img"> 
+                      </div>
+          <h3 class="header__title" id="card-title">
+            <div class="skeleton skeleton-text"></div>
+            <div class="skeleton skeleton-text"></div>
+          </h3>
+        </div>
+      
+        <div class="card__body">
+          <div class="body__text" id="card-details">
+            <div class="skeleton skeleton-text skeleton-text__body"></div>
+          </div>
+      
+          <div class="card__body body__img">
+            <img class="skeleton" alt="" id="cover-img" />
+          </div>
+          <img src="" alt="">
+        </div>
+      
+        <div class="card__footer" id="card-footer">
+          <div class="skeleton skeleton-text skeleton-footer"></div>
+        </div>
+      </a>
+    </template> 
+  </div> -->
+  <!-- sssssss&&&&&&&&&&&&&&&&&sssssssssss -->
+  <span class="loader"></span>
+
+  <div class="swipe__comments">
+    <div class="header__section">Comments</div>
+    <div class="body__section">
+
+    </div>
+  </div>
+  <div class="comment__input" data-id="">
+    <input type="text" placeholder="Write your comment here..." name="" id="">
+    <div class="icon__holder">
+      <i class="fa-solid fa-paper-plane"></i>
+    </div>
+  </div>
+
+
+  <div class="alert hide">
+    <span class="fas fa-exclamation-circle"></span>
+    <span class="msg">a</span>
+    <span class="close-btn">
+        <span class="fas fa-times"></span>
+    </span>
+  </div>
+
+  <div class="delete__div" data-id="" id="delete-div">
+    <div class="delete-header">
+      <div class="delete-title">Are you sure you want to delete the post?</div>
+      <div class="close close-icon">X</div>
+    </div>
+    <div class="delete-body">
+      <button class="close refuse__delete">Close</button>
+      <button class="confirm__delete">Yes, delete</button>
+    </div>
+  </div>
+
+  <div class="edit__popup">
+    <div class="edit-header">
+      <div class="close close-icon">X</div>
+      <h2>Edit The Post</h2>
+    </div>
+    <div class="form">
+      <div class="form-element">
+        <label for="edit__title">Title</label>
+        <input class="type" type="text" data-el="input" id="title" placeholder="Write a title...">
+      </div>
+      <div class="form-element">
+        <label for="edit__details">Body</label>
+        <textarea class="type" data-el="textarea" id="details" placeholder="Write the details..."></textarea>
+      </div>
+      <div class="form-element">
+        <label for="edit__img">Image</label>
+        <input type="file" id="img">
+        <button class="custom-file-button">Choose File</button>
+      </div>
+      <div class="form-element fixed">
+        <div class="submit-div">
+          <button id="edited" type="submit">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="create__post__popup" class="popup">
+    <div class="popup-header">
+      <div class="close close-btn">&times;</div>
+      <h2>Create A Post</h2>
+    </div>
+    <div class="form">
+      <div class="form-element">
+        <label for="title">Title</label>
+        <input class="type" type="text" id="title" placeholder="Write a title...">
+      </div>
+      <div class="form-element">
+        <label for="details">Body</label>
+        <textarea class="type" id="details" placeholder="Write the details..."></textarea>
+      </div>
+      <div class="form-element">
+        <label for="img">Image</label>
+        <input type="file" id="img">
+        <button class="custom-file-button">Choose File</button>
+      </div>
+      <div class="form-element fixed">
+        <div class="submit-div">
+          <button id="created" type="submit">Share</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<header class="header">
+    <a href="index.html" class="logo">Space</a>
+    <input type="checkbox" id="check">
+    <label for="check" class="icons">
+        <span class="icon">
+            <span class="top"></span>
+            <span class="meat"></span>
+            <span class="bottom"></span>
+        </span>
+        <!-- <i class="bx bx-x" id="close-icon"></i> -->
+    </label>
+    <!-- <div class="header-info cursor">
+        <img class="cursor" src="./2a99726d44589f5475eea027b5b44f72.jpg" alt=''>
+        <div>mohamed-ayad40</div>
+    </div> -->
+    <nav class="navbar">
+        <a href="index.html" style="--i: 0;">Home</a>
+        <a href="profile.html" style="--i: 1;">Profile</a>
+        <a href="#" style="--i: 2;">About</a>
+        <a href="#" style="--i: 3;">Contact</a>
+        <input type="checkbox" id="darkmode-toggle">
+        <label for="darkmode-toggle" style="--i: 4;" class="theme-toggle"></label>
+        <button class="logout" style="--i: 5">Logout</button>
+    </nav>
+</header>
+
+<footer>
+  <div id="home-button">
+    <i class="fa-solid fa-house">
+      <a href="#"></a>
+    </i>
+  </div>
+  <div id="add-button">
+    <i class="fa-solid fa-plus"></i>
+  </div>
+  <div id="profile-button">
+    <i class="fa-solid fa-user"></i>
+  </div>
+</footer>
+
+  <div class="add-post">
+      <div class="add-div cursor"></div>
+      <img class="cursor userImg" src="./unknownPerson.jpg" alt="">
+  </div>
+
+
+  <div class="posts">
+    <div id="container" class="container">
+
+    </div>
+  </div>
+  <div id="overlay"></div>
+  <div class="test">i have something to show to you</div>
+
+  <div class="post__comments" data-id="">
+    <div class="post__section">
+      <img alt="" srcset="">
+    </div>
+    <div class="comments__section">
+      <div class="comments__header">
+        <div class="user__info">
+          <img class="cursor" src="" alt="">
+          <div class="cursor username"></div>
+        </div>
+        <svg id="dots" class="cursor inside_post dots" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16"> <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/> </svg>
+      </div>
+      <input type="text" class="post__input" placeholder="Add a comment...">
+      <div class="comments__info">
+        <div class="every__comment">
+          <div class="every__comment__header">
+            <img class="cursor" src="./2a99726d44589f5475eea027b5b44f72.jpg" alt="">
+            <div class="username cursor">mohamed-ayad40</div>
+          </div>
+          <div class="post__title">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa autem rem qui quidem accusamus eveniet neque dolor doloribus recusandae molestias tempora, illum enim odit modi laboriosam quaerat! Impedit, doloremque modi!</div>
+        </div>
+        <div class="every__comment">
+          <div class="every__comment__header">
+            <img class="cursor" src="./2a99726d44589f5475eea027b5b44f72.jpg" alt="">
+            <div class="username cursor">mohamed-ayad40</div>
+          </div>
+          <div class="post__title">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa autem rem qui quidem accusamus eveniet neque dolor doloribus recusandae molestias tempora, illum enim odit modi laboriosam quaerat! Impedit, doloremque modi!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Install ION ICONS via CDN -->
+<!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->
+<script>
+  // const container = document.querySelector(".container");
+  // const cardTemplate = document.getElementById("card-template");
+  // for (let i = 0; i < 10; i++) {
+  //   console.log("true");
+  //   container.append(cardTemplate.content.cloneNode(true));
+  // }
+//   const imagesWithoutSrc = document.querySelectorAll("img");
+// imagesWithoutSrc.forEach(image => {
+//   image.removeAttribute("src");
+// });
+// document.addEventListener("DOMContentLoaded", function(event) {
+//    document.querySelectorAll('img').forEach(function(img){
+//   	img.onerror = function(){this.style.display='none';};
+//    })
+// });
+</script>
+<script src="index.js"></script>
+</body>
+</html>
