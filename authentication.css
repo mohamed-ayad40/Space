@@ -254,7 +254,7 @@ body {
     line-height: 40px;
 }
 .loader {
-    visibility: hidden;
+    display: none;
     position: absolute;
     z-index: 99999;
     width: 275px;

@@ -75,8 +75,8 @@ form.onsubmit = async (e) => {
 
 function toggleLoader(show = true) {
     if (show) {
-      document.querySelector(".loader").style.visibility = "visible";
+      document.querySelector(".loader").style.display = "block";
     } else {
-      document.querySelector(".loader").style.visibility = "hidden";
+      document.querySelector(".loader").style.display = "none";
     }
 };
