@@ -15,7 +15,7 @@ closeBtn.onclick = () => {
     alert.classList.remove( "show");
     setTimeout(() => {
         alert.classList.remove("danger-alert", "warning-alert", "success-alert");
-        console.log(alert.classList)
+        // console.log(alert.classList)
     }, 5000);
 };
 

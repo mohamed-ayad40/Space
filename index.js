@@ -410,6 +410,7 @@ function triggerTyping () {
 function openSwipeComments () {
   commentsPhoneSection.classList.add("active");
   swipeCommentInput.classList.add("active");
+  document.body.classList.add("no-scroll");
   // touchStartY = 0;
 
 
@@ -455,6 +456,7 @@ function openSwipeComments () {
         commentsPhoneSection.classList.remove("no-transition");
         commentsPhoneSection.style.transform = `translateY(100%)`;
         swipeCommentInput.classList.remove("active");
+        document.body.classList.add("no-scroll");
         focusOut();
 
     } else if (touchEndY < expandThreshold) {

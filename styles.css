@@ -2169,6 +2169,7 @@ label.theme-toggle:active:after {
   cursor: pointer;
 }
 .comment__input input {
+  color: var(--text-color-input);
   width: 100%;
   padding: 15px 85px 15px 15px;
   outline: none;
@@ -2350,6 +2351,7 @@ label.theme-toggle:active:after {
   aspect-ratio: 1 / 1;
 }
 .profile__container .user__bio {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   padding-top: 100px;
