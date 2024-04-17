@@ -54,7 +54,7 @@ form.onsubmit = async (e) => {
             body: formData
         });
         let user = await response.json();
-        console.log(user)
+
         if (user.errors) {
             throw new Error(user.message);
         }
